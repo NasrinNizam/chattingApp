@@ -4,10 +4,12 @@ import loginanim from '../../../public/animations/loginanim.json'
 import { IoEyeOff } from "react-icons/io5";
 import { IoMdEye } from "react-icons/io";
 import '../LoginCompo/login.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Bounce, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useDispatch } from 'react-redux';
+import { userData } from '../../slices/UserSlice';
  
 
 
@@ -19,7 +21,8 @@ export const Login = () => {
     const [password , setPassword]                      = useState('')
     const [passwordError , setPasswrodError]            = useState('')
     const [show , setShow]                              =useState(false)
-
+    const navigate = useNavigate()
+    const dispatch  = useDispatch()
     // ========= firebase variables ==========
      const auth = getAuth();
     // ====== function part=====//
@@ -52,7 +55,7 @@ export const Login = () => {
          const user = userCredential.user;
          if(user.emailVerified == false){
             // ===== varify email toast massage 
-            toast.alert('Varify your email!', {
+            toast.error('Varify your email!', {
                 position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -77,11 +80,28 @@ export const Login = () => {
                 theme: "dark",
                 transition: Bounce,
                 });
+   // ========= navigate==============//
+                navigate('/')
+ // ================ dispatch part ========//
+                dispatch(userData(user))
+
          }
   })
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
+    // ===== wrong email toast massage 
+    toast.error('Wrong email!', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Bounce,
+      });
     console.log(errorCode)
   });
 
@@ -95,7 +115,7 @@ export const Login = () => {
     <div>
         <div className="container">
             <div className="form flex justify-around items-center w-full h-screen bg-[#F4F7FA] ">
-                <div className="animation w-[500px] ">
+                <div className="animation w-[400px] ">
                 <Lottie animationData={loginanim} />
                 </div>
                 <div className="main-form bg-gradient-to-r from-[#FF8D89]  to-[#FB71B8] py-10 px-8 rounded-lg ">

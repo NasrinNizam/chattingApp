@@ -101,7 +101,7 @@ export const SignUp = () => {
                 });
                 console.log(userCredential)
                 // ======= navigate part
-                navigate('/')
+                navigate('/loginPage')
                 // ====== email verification part
                 sendEmailVerification(auth.currentUser)
             const user = userCredential.user;
@@ -151,10 +151,10 @@ export const SignUp = () => {
     <>
      <div className="container">
             <div className="form flex justify-around items-center w-full h-screen bg-[#283C46] bg-opacity-70 ">
-                <div className="animation w-[500px] ">
+                <div className="animation w-[400px] ">
                 <Lottie animationData={signup} />
                 </div>
-                <div className="main_form  py-5 px-8 rounded-lg bg-[#D9D9D1] ">
+                <div className="main_form  py-5 px-8 rounded-lg bg-[#D9D9D1] border-[2px] border-black ">
                     <h1 className="login_head text-center text-3xl">Sign Up</h1>
                     <form onSubmit={handelSubmit}>
                         {/* ====user name part==== */}

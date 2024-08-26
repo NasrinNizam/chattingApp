@@ -1,0 +1,35 @@
+import React from 'react'
+import { FaEnvelope, FaPhone } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
+
+export const Home = () => {
+  // ========== slice part
+  const currentUserData =useSelector((state)=>state.counter.value)
+  console.log(currentUserData)
+  return (
+    <div>
+     <div className="max-w-sm mx-auto bg-gradient-to-r from-pink-300 via-purple-300 to-blue-200 shadow-lg rounded-lg overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-2xl">
+      <div className="h-40">
+        <img className="w-full h-full object-cover" src="https://via.placeholder.com/800x400.png?text=Cover+Photo" alt="Cover" />
+      </div>
+      <div className="flex justify-center -mt-16">
+        <img className="w-32 h-32 object-cover rounded-full border-4 border-white transform transition duration-500 hover:scale-110" src={currentUserData?.photoURL} alt="Profile"/>
+      </div>
+      <div className="text-center px-6 py-4">
+        <h2 className="text-xl font-bold text-black">{currentUserData?.displayName} </h2>
+        <h2 className="text-xl font-semibold text-black">Description</h2>
+        <div className="flex justify-center items-center text-black mt-2">
+          <FaEnvelope className="mr-2" />
+          <p>{currentUserData?.email} </p>
+        </div>
+        <div className="flex justify-center items-center text-black mt-2">
+          <FaPhone className="mr-2" />
+          <p>(123) 456-7890</p>
+        </div>
+      </div>
+    </div>
+
+
+    </div>
+  )
+}

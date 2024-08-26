@@ -8,16 +8,19 @@ import { NotFoundPage } from './Pages/NotFoundPage'
 import { ToastContainer } from 'react-toastify'
 import database from './firebase.config'
 import ResetPassword from './components/LoginCompo/ResetPassword'
+import { Home } from './components/home/Home'
+import { HomePage } from './Pages/HomePage'
 function App() {
   const route = createBrowserRouter(
     createRoutesFromElements(
       <Route>
-        <Route path='/' element={<LayoutOne/>}>
-           <Route index element={<LoginPage/>}/>
-           <Route path='/signuppage' element={<SignUpPage/>}/>
+           <Route path='/loginPage' element={<LoginPage/>}/>
+           <Route path='/signupPage' element={<SignUpPage/>}/>
            <Route path='/resetPassword' element={<ResetPassword/>}/>
-           <Route path='/notfoundpage' element={<NotFoundPage/>}/>
-        </Route>
+           <Route path='/notfoundpage' element={<NotFoundPage/>}/> 
+           <Route path='/' element={<LayoutOne/>}>
+             <Route index element={<HomePage/>}/>
+           </Route>
       </Route>
     )
   )
