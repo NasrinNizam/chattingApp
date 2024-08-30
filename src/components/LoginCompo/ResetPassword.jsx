@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import { FaArrowRight } from "react-icons/fa";
 
 const ResetPassword = () => {
+    const navigate = useNavigate()
     const auth = getAuth();
 
     const [email , setEmail] = useState('')
 
-    const handleEmail=()=>{
+    const handleEmail=(event)=>{
         setEmail(event.target.value)
     }
 
@@ -20,6 +21,8 @@ const ResetPassword = () => {
             sendPasswordResetEmail(auth, email)
             .then(() => {
               alert('varify your email')
+              navigate('/loginPage')
+
             })
             .catch((error) => {
               const errorCode = error.code;
@@ -38,10 +41,10 @@ const ResetPassword = () => {
             <label htmlFor="email" className="block text-gray-600 text-sm font-medium mb-2">Email Address</label>
             <input onChange={handleEmail} type="email" id="email" className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300 ease-in-out" placeholder="Enter your email" />
           </div>
-          <button type="submit" className="w-full py-3 bg-blue-600 text-white font-semibold hover:bg-blue-700 focus:scale-110 transition-colors duration-300 ease-in-out"> Reset Password </button>
+          <button type="submit" className="w-full py-3 bg-teal-600 text-white rounded-md font-semibold hover:bg-teal-700 focus:scale-110 transition-colors duration-300 ease-in-out"> Reset Password </button>
         </form>
         <div className="text-center mt-6">
-          <Link to="/" className="flex justify-center items-center gap-3 text-sm text-black hover:font-bold transition-colors duration-300 ease-in-out">  Go Home<FaArrowRight /> </Link>
+          <Link to="/loginPage" className="flex justify-center text-lg items-center gap-3 text-black hover:font-bold transition-colors duration-300 ease-in-out">Go Back<FaArrowRight /> </Link>
         </div>
       </div>
     </div>

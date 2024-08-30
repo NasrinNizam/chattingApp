@@ -10,7 +10,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useDispatch } from 'react-redux';
 import { userData } from '../../slices/UserSlice';
- 
+import BeatLoader from "react-spinners/BeatLoader";
+
 
 
 export const Login = () => {
@@ -25,6 +26,8 @@ export const Login = () => {
     const dispatch  = useDispatch()
     // ========= firebase variables ==========
      const auth = getAuth();
+     const [loader , setLoader]                         = useState(false)
+
     // ====== function part=====//
     const handelEmail =  (e)=>{
         setEmail(e.target.value)
@@ -48,12 +51,14 @@ export const Login = () => {
         setPasswrodError('Enater your password')
     }
     else{
+         setLoader(true)
         // ====== sign in with email and password
         signInWithEmailAndPassword(auth, email, password)
          .then((userCredential) => {
          // Signed in 
          const user = userCredential.user;
          if(user.emailVerified == false){
+          setLoader(false)
             // ===== varify email toast massage 
             toast.error('Varify your email!', {
                 position: "top-right",
@@ -88,10 +93,11 @@ export const Login = () => {
          }
   })
   .catch((error) => {
+    setLoader(false)
     const errorCode = error.code;
     const errorMessage = error.message;
     // ===== wrong email toast massage 
-    toast.error('Wrong email!', {
+    toast.error('Wrong email or Password', {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -114,8 +120,8 @@ export const Login = () => {
   return (
     <div>
         <div className="container">
-            <div className="form flex justify-around items-center w-full h-screen bg-[#F4F7FA] ">
-                <div className="animation w-[400px] ">
+            <div className="form flex justify-around items-center w-full h-screen bg-[#5B2454] ">
+                <div className="animation w-[350px] ">
                 <Lottie animationData={loginanim} />
                 </div>
                 <div className="main-form bg-gradient-to-r from-[#FF8D89]  to-[#FB71B8] py-10 px-8 rounded-lg ">
@@ -142,8 +148,15 @@ export const Login = () => {
                           <Link to="/resetPassword" >Forgotten password?</Link>
                         </div>
                         <p className='error'>{passwordError} </p>
+                        {
+                            loader?
+                            <div className="w-[400px] h-[50px] my-5 bg-[#893976] flex justify-center items-center rounded-[10px] ">
+                              <BeatLoader color='#fff' />
+                            </div>
+                                :
+                             <button type='submit' className="login-Button">Login</button>
+                        }
                         
-                        <button type='submit' className="login-Button">Login</button>
                         <p>Don't have any account? <Link to="/signuppage" className="text-lg font-poppins font-bold " >SignUp</Link> </p>
                     </form>
                 </div>

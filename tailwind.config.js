@@ -10,7 +10,8 @@ export default {
       center:true,
     },
     fontFamily:{
-      'poppins' : ["Poppins", 'sans-serif']
+      'poppins' : ["Poppins", 'sans-serif'],
+      'sevillana' : ["Sevillana", 'cursive']
     }
   },
   plugins: [],

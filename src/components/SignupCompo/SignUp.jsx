@@ -83,7 +83,7 @@ export const SignUp = () => {
             // ========= update profile and image
             updateProfile(auth.currentUser, {
                 displayName: Name,
-                photoURL: "https://cdn-icons-png.flaticon.com/512/8847/8847419.png"
+                photoURL: "https://i.ibb.co/SrqbLrC/98.jpg"
               })
             // ========= Loader part starts
             setLoader(false)
@@ -208,10 +208,7 @@ export const SignUp = () => {
                                 :
                              <button type='submit' className="loginButton">Sign Up</button>
                         }
-                            
-                       
-                        
-                        <p>Already have an account? <Link to="/" className="text-[16px] text-[#4A6CD] font-poppins font-bold " >Login</Link> </p>
+                        <p>Already have an account? <Link to="/loginPage" className="text-[16px] text-[#4A6CD] font-poppins font-bold " >Login</Link> </p>
                     </form>
                 </div>
             </div>
