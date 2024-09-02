@@ -51,6 +51,7 @@ export const Login = () => {
         setPasswrodError('Enater your password')
     }
     else{
+      // ======= turn on loader
          setLoader(true)
         // ====== sign in with email and password
         signInWithEmailAndPassword(auth, email, password)
@@ -58,7 +59,6 @@ export const Login = () => {
          // Signed in 
          const user = userCredential.user;
          if(user.emailVerified == false){
-          setLoader(false)
             // ===== varify email toast massage 
             toast.error('Varify your email!', {
                 position: "top-right",
@@ -71,6 +71,8 @@ export const Login = () => {
                 theme: "dark",
                 transition: Bounce,
                 });
+                // ===== turn off loading
+                setLoader(false)
          }
          else{
             // ===== success toast massage 
@@ -85,15 +87,16 @@ export const Login = () => {
                 theme: "dark",
                 transition: Bounce,
                 });
-   // ========= navigate==============//
+                // ============ Data store at local storage
+                localStorage.setItem('userData', JSON.stringify(user) )
+            // ========= navigate to home
                 navigate('/')
- // ================ dispatch part ========//
+            // ================ dispatch part
                 dispatch(userData(user))
 
          }
   })
   .catch((error) => {
-    setLoader(false)
     const errorCode = error.code;
     const errorMessage = error.message;
     // ===== wrong email toast massage 
@@ -108,7 +111,8 @@ export const Login = () => {
       theme: "dark",
       transition: Bounce,
       });
-    console.log(errorCode)
+      // ======= turn off loading
+      setLoader(false)
   });
 
         

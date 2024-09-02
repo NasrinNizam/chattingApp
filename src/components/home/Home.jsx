@@ -1,11 +1,17 @@
 import React from 'react'
 import { FaEnvelope, FaPhone } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
+import { userData } from '../../slices/UserSlice';
 
 export const Home = () => {
   // ========== slice part
   const currentUserData =useSelector((state)=>state.counter.value)
-  console.log(currentUserData)
+
+
+
+
+  // ======== console part
+  console.log(JSON.parse(localStorage.getItem(userData)))
   return (
     <div>
      <div className="max-w-sm mx-auto bg-[#074173] shadow-lg rounded-lg overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-2xl">

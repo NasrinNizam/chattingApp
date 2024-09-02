@@ -17,7 +17,7 @@ function App() {
            <Route path='/loginPage' element={<LoginPage/>}/>
            <Route path='/signupPage' element={<SignUpPage/>}/>
            <Route path='/resetPassword' element={<ResetPassword/>}/>
-           <Route path='/notfoundpage' element={<NotFoundPage/>}/> 
+           <Route path='*' element={<NotFoundPage/>}/> 
            <Route path='/' element={<LayoutOne/>}>
              <Route index element={<HomePage/>}/>
            </Route>
