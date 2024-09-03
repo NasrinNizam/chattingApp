@@ -10,6 +10,8 @@ import database from './firebase.config'
 import ResetPassword from './components/LoginCompo/ResetPassword'
 import { Home } from './components/home/Home'
 import { HomePage } from './Pages/HomePage'
+import { FriendPage } from './Pages/FriendPage'
+import { ChatPage } from './Pages/ChatPage'
 function App() {
   const route = createBrowserRouter(
     createRoutesFromElements(
@@ -20,6 +22,8 @@ function App() {
            <Route path='*' element={<NotFoundPage/>}/> 
            <Route path='/' element={<LayoutOne/>}>
              <Route index element={<HomePage/>}/>
+             <Route path='/friendPage' element={<FriendPage/>}/>
+             <Route path='/chatPage' element={<ChatPage/>}/>
            </Route>
       </Route>
     )
