@@ -1,8 +1,15 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { IoIosLogIn } from "react-icons/io";
+import { useSelector } from 'react-redux';
+import { BsPersonVcardFill, BsPersonCheckFill  } from "react-icons/bs";
+import { AiFillMessage } from "react-icons/ai";
+import { IoNotificationsCircleSharp } from "react-icons/io5";
 
 export const Navbar = () => {
+  // =========== get data from slices
+  const sliceUser = useSelector((state)=>state.counter.value)
+  console.log(sliceUser)
   return (
     <>
     <nav className="bg-[#074173] h-screen w-[200px] px-5 flex flex-col justify-between ">
@@ -11,19 +18,20 @@ export const Navbar = () => {
       </div>
       <div className="main">
         <ul className="flex-col flex gap-4">
-          <li><NavLink to="/" className={({ isActive }) => isActive ? " text-[18px] text-white font-medium bg-slate-400 px-3 py-1 rounded-lg " : " text-[18px] text-white font-normal "}> Profile</NavLink></li>
-          <li><NavLink to="/friendPage" className={({ isActive }) => isActive ? " text-[18px] text-white font-medium bg-slate-400 px-3 py-1 rounded-lg " : " text-[18px] text-white font-normal "}>Friends</NavLink></li>
-          <li><NavLink to="/chatPage" className={({ isActive }) => isActive ? " text-[18px] text-white font-medium bg-slate-400 px-3 py-1 rounded-lg " : " text-[18px] text-white font-normal "}>Massages</NavLink></li>
+          <li><NavLink to="/" className={({ isActive }) => isActive ? " text-[18px] text-white font-medium bg-slate-400 px-3 py-1 rounded-lg flex items-center gap-2 " : " text-[18px] text-white font-normal flex items-center gap-2 "}><BsPersonVcardFill />Profile</NavLink></li>
+          <li><NavLink to="/friendPage" className={({ isActive }) => isActive ? " text-[18px] text-white font-medium bg-slate-400 px-3 py-1 rounded-lg flex items-center gap-2 " : " text-[18px] text-white font-normal flex items-center gap-2 "}><BsPersonCheckFill /> Friends</NavLink></li>
+          <li><NavLink to="/chatPage" className={({ isActive }) => isActive ? " text-[18px] text-white font-medium bg-slate-400 px-3 py-1 rounded-lg flex items-center gap-2 " : " text-[18px] text-white font-normal flex items-center gap-2 "}>< AiFillMessage /> Massages</NavLink></li>
+          <li><NavLink to="/notificationPage" className={({ isActive }) => isActive ? " text-[18px] text-white font-medium bg-slate-400 px-3 py-1 rounded-lg flex items-center gap-2 " : " text-[18px] text-white font-normal flex items-center gap-2 "}><IoNotificationsCircleSharp  /> Notification</NavLink></li>
         </ul>
       </div>
       <div className="mb-5 flex flex-col gap-3 ">
         <div className="div">
           <div className="w-[80px] h-[80px] rounded-full ">
-            <img className='w-full h-full rounded-full ' src="images/98.jpg" alt="photo" />
+            <img className='w-full h-full rounded-full ' src={sliceUser?.photoURL} alt="photo" />
           </div>
-          <h4 className="text-white  ">Nasrin Sultana</h4>
+          <h4 className="text-white  ">{sliceUser?.displayName} </h4>
         </div>
-        <Link to="#" className='text-white flex items-center gap-2' >Log Out <IoIosLogIn />        </Link>
+        <Link to="#" className='text-white flex items-center gap-2' >Log Out <IoIosLogIn /></Link>
       </div>
     </nav>
     </>

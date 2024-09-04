@@ -13,9 +13,10 @@ export const Home = () => {
   // ======== console part
   console.log(JSON.parse(localStorage.getItem(userData)))
   return (
-    <div>
+    <div className='container'>
       {/* ========== Profile card =========== */}
-     <div className="max-w-sm mx-auto bg-[#074173] shadow-lg rounded-lg overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-2xl">
+        <div className="flex justify-center items-center ">
+        <div className="max-w-sm mx-auto mt-6 bg-[#074173] shadow-lg rounded-lg overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-2xl">
       <div className="h-40">
         <img className="w-full h-full object-cover" src="https://via.placeholder.com/800x400.png?text=Cover+Photo" alt="Cover" />
       </div>
@@ -35,7 +36,7 @@ export const Home = () => {
         </div>
       </div>
     </div>
-
+        </div>
 
     </div>
   )

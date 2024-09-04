@@ -11,6 +11,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useDispatch } from 'react-redux';
 import { userData } from '../../slices/UserSlice';
 import BeatLoader from "react-spinners/BeatLoader";
+import { getDatabase, ref, set } from "firebase/database";
 
 
 
@@ -22,11 +23,12 @@ export const Login = () => {
     const [password , setPassword]                      = useState('')
     const [passwordError , setPasswrodError]            = useState('')
     const [show , setShow]                              =useState(false)
+    const [loader , setLoader]                         = useState(false)
     const navigate = useNavigate()
     const dispatch  = useDispatch()
     // ========= firebase variables ==========
+     const db = getDatabase();
      const auth = getAuth();
-     const [loader , setLoader]                         = useState(false)
 
     // ====== function part=====//
     const handelEmail =  (e)=>{
@@ -93,6 +95,13 @@ export const Login = () => {
                 navigate('/')
             // ================ dispatch part
                 dispatch(userData(user))
+            // ================ database part
+            set(ref(db, 'AllUser/' + user.uid), {
+              userName :user.displayName,
+              userPhoto :user.photoURL,
+              userId : user.uid
+             });
+          
 
          }
   })

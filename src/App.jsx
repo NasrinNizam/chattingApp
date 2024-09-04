@@ -12,6 +12,7 @@ import { Home } from './components/home/Home'
 import { HomePage } from './Pages/HomePage'
 import { FriendPage } from './Pages/FriendPage'
 import { ChatPage } from './Pages/ChatPage'
+import { NotificationPage } from './Pages/NotificationPage'
 function App() {
   const route = createBrowserRouter(
     createRoutesFromElements(
@@ -24,6 +25,7 @@ function App() {
              <Route index element={<HomePage/>}/>
              <Route path='/friendPage' element={<FriendPage/>}/>
              <Route path='/chatPage' element={<ChatPage/>}/>
+             <Route path='/notificationPage' element={<NotificationPage/>}/>
            </Route>
       </Route>
     )
