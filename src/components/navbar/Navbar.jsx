@@ -24,7 +24,7 @@ export const Navbar = () => {
           <li><NavLink to="/notificationPage" className={({ isActive }) => isActive ? " text-[18px] text-white font-medium bg-slate-400 px-3 py-1 rounded-lg flex items-center gap-2 " : " text-[18px] text-white font-normal flex items-center gap-2 "}><IoNotificationsCircleSharp  /> Notification</NavLink></li>
         </ul>
       </div>
-      <div className="mb-5 flex flex-col gap-3 ">
+      <div className="mb-5 flex flex-col gap-3  ">
         <div className="div">
           <div className="w-[80px] h-[80px] rounded-full ">
             <img className='w-full h-full rounded-full ' src={sliceUser?.photoURL} alt="photo" />

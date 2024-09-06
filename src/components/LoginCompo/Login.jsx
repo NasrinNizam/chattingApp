@@ -96,11 +96,11 @@ export const Login = () => {
             // ================ dispatch part
                 dispatch(userData(user))
             // ================ database part
-            set(ref(db, 'AllUser/' + user.uid), {
-              userName :user.displayName,
-              userPhoto :user.photoURL,
-              userId : user.uid
-             });
+            set(ref(db, 'Allusers/' + user.uid ), {
+              userName: user.displayName,
+              userPhoto: user.photoURL,
+              uid: user.uid,
+            });
           
 
          }

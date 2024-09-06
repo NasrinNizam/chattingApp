@@ -11,7 +11,7 @@ export const Home = () => {
 
 
   // ======== console part
-  console.log(JSON.parse(localStorage.getItem(userData)))
+  console.log(currentUserData)
   return (
     <div className='container'>
       {/* ========== Profile card =========== */}
@@ -25,7 +25,7 @@ export const Home = () => {
       </div>
       <div className="text-center px-6 py-4">
         <h2 className="text-2xl text-white leading-7 tracking-wider font-extrabold font-sevillana">{currentUserData?.displayName} </h2>
-        <h2 className="text-lg text-white font-poppins font-medium">React Developer</h2>
+        <h2 className="text-lg text-white font-poppins font-medium"></h2>
         <div className="flex justify-center items-center text-black mt-1">
           <FaEnvelope className="mr-2 text-white" />
           <p className="text-white font-poppins">{currentUserData?.email} </p>

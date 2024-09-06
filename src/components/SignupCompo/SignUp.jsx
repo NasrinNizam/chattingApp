@@ -83,12 +83,12 @@ export const SignUp = () => {
             // ========= update profile and image
             updateProfile(auth.currentUser, {
                 displayName: Name,
-                photoURL: "https://i.ibb.co/SrqbLrC/98.jpg"
+                photoURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7-GKjnABzDM6QtgdxFi3AVutidGiUDAr2QA&s"
               })
             // ========= Loader part starts
             setLoader(false)
             // ========= toast massage when success
-            toast.success('SignUp successfully done!', {
+            toast.success('varify your email!', {
                 position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,
