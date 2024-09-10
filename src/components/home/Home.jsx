@@ -13,10 +13,7 @@ export const Home = () => {
   // ======== console part
   console.log(currentUserData)
   return (
-    <div className='container'>
-      {/* ========== Profile card =========== */}
-        <div className="flex justify-center items-center ">
-        <div className="max-w-sm mx-auto mt-6 bg-[#074173] shadow-lg rounded-lg overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-2xl">
+    <div className="max-w-sm mx-auto mt-6 bg-[#074173] shadow-lg rounded-lg overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-2xl">
       <div className="h-40">
         <img className="w-full h-full object-cover" src="https://via.placeholder.com/800x400.png?text=Cover+Photo" alt="Cover" />
       </div>
@@ -35,9 +32,6 @@ export const Home = () => {
           <p className="text-white font-poppins">(+880) 01706226996 </p>
         </div>
       </div>
-    </div>
-        </div>
-
     </div>
   )
 }

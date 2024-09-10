@@ -16,7 +16,7 @@ export const LayoutOne = () => {
   } ,[])
   console.log(sliceUser)
   return (
-    <div className='flex'>
+    <div>
       <Navbar/>
       <Outlet/>
     </div>

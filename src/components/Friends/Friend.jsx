@@ -21,8 +21,8 @@ export const Friend = () => {
   console.log(allUsers)
 
   return (
-    <div className='container'>
-      <div className="w-[350px] h-[500px] border-2 border-[#074173] rounded-lg mt-10 flex flex-col gap-6 p-5 ">
+    <div className='container  flex justify-center items-center'>
+      <div className="w-[350px] bg-[#074173] bg-opacity-50 h-[500px] border-2 border-[#074173] rounded-lg mt-10 flex flex-col gap-6 p-5 ">
         <h2 className='text-lg font-medium font-poppins mt-5 text-center'>People You may know</h2>
 
         {

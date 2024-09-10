@@ -12,7 +12,7 @@ export const Navbar = () => {
   console.log(sliceUser)
   return (
     <>
-    <nav className="bg-[#074173] h-screen w-[200px] px-5 flex flex-col justify-between ">
+    <nav className="bg-[#074173] h-screen w-[200px] px-5 flex flex-col justify-between absolute top-0 left-0 ">
       <div className="mt-5 ">
         <h1 className='text-white text-[35px] font-sevillana font-bold '>Chatify</h1>
       </div>
