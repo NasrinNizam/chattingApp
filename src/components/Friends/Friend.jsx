@@ -23,9 +23,9 @@ export const Friend = () => {
   return (
     <div className='container  flex justify-center items-center'>
       <div className="w-[350px] bg-[#074173] bg-opacity-50 h-[500px] border-2 border-[#074173] rounded-lg mt-10 flex flex-col gap-6 p-5 ">
-        <h2 className='text-lg font-medium font-poppins mt-5 text-center'>People You may know</h2>
+        <h2 className='text-lg font-medium font-poppins mt-5 text-center'>Friends</h2>
 
-        {
+        {/* {
           allUsers.map((item)=>(
             <div className="singel_users flex justify-between mb-5 ">
              <div className='flex items-center gap-5'> 
@@ -40,7 +40,7 @@ export const Friend = () => {
          </div>
           ))
         }
-           
+            */}
       </div>
     </div>
   )

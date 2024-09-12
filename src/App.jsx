@@ -13,6 +13,8 @@ import { HomePage } from './Pages/HomePage'
 import { FriendPage } from './Pages/FriendPage'
 import { ChatPage } from './Pages/ChatPage'
 import { NotificationPage } from './Pages/NotificationPage'
+import { UsersPage } from './Pages/UsersPage'
+import { FriendRequPage } from './Pages/FriendRequPage'
 function App() {
   const route = createBrowserRouter(
     createRoutesFromElements(
@@ -24,6 +26,8 @@ function App() {
            <Route path='/' element={<LayoutOne/>}>
              <Route index element={<HomePage/>}/>
              <Route path='/friendPage' element={<FriendPage/>}/>
+             <Route path='/friendRequPage' element={<FriendRequPage/>}/>
+             <Route path='/userPage' element={<UsersPage/>}/>
              <Route path='/chatPage' element={<ChatPage/>}/>
              <Route path='/notificationPage' element={<NotificationPage/>}/>
            </Route>

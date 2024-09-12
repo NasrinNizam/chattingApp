@@ -9,7 +9,6 @@ import { IoNotificationsCircleSharp } from "react-icons/io5";
 export const Navbar = () => {
   // =========== get data from slices
   const sliceUser = useSelector((state)=>state.counter.value)
-  console.log(sliceUser)
   return (
     <>
     <nav className="bg-[#074173] h-screen w-[200px] px-5 flex flex-col justify-between absolute top-0 left-0 ">
@@ -20,6 +19,7 @@ export const Navbar = () => {
         <ul className="flex-col flex gap-4">
           <li><NavLink to="/" className={({ isActive }) => isActive ? " text-[18px] text-white font-medium bg-slate-400 px-3 py-1 rounded-lg flex items-center gap-2 " : " text-[18px] text-white font-normal flex items-center gap-2 "}><BsPersonVcardFill />Profile</NavLink></li>
           <li><NavLink to="/friendPage" className={({ isActive }) => isActive ? " text-[18px] text-white font-medium bg-slate-400 px-3 py-1 rounded-lg flex items-center gap-2 " : " text-[18px] text-white font-normal flex items-center gap-2 "}><BsPersonCheckFill /> Friends</NavLink></li>
+          <li><NavLink to="/userPage" className={({ isActive }) => isActive ? " text-[18px] text-white font-medium bg-slate-400 px-3 py-1 rounded-lg flex items-center gap-2 " : " text-[18px] text-white font-normal flex items-center gap-2 "}><BsPersonCheckFill />Add Friend</NavLink></li>
           <li><NavLink to="/chatPage" className={({ isActive }) => isActive ? " text-[18px] text-white font-medium bg-slate-400 px-3 py-1 rounded-lg flex items-center gap-2 " : " text-[18px] text-white font-normal flex items-center gap-2 "}>< AiFillMessage /> Massages</NavLink></li>
           <li><NavLink to="/notificationPage" className={({ isActive }) => isActive ? " text-[18px] text-white font-medium bg-slate-400 px-3 py-1 rounded-lg flex items-center gap-2 " : " text-[18px] text-white font-normal flex items-center gap-2 "}><IoNotificationsCircleSharp  /> Notification</NavLink></li>
         </ul>

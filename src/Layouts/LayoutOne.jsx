@@ -14,7 +14,6 @@ export const LayoutOne = () => {
     }
 
   } ,[])
-  console.log(sliceUser)
   return (
     <div>
       <Navbar/>
