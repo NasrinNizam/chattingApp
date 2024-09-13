@@ -28,7 +28,7 @@ export const FriendRequest = () => {
 
   return (
     <div className='container  flex justify-center items-center'>
-      <div className="px-8 py-3 bg-[#074173] bg-opacity-50 h-[500px] border-2 border-[#074173] rounded-lg mt-10 flex flex-col gap-6 p-5 ">
+      <div className="px-8 py-3 overflow-y-scroll bg-[#074173] bg-opacity-50 h-[500px] border-2 border-[#074173] rounded-lg mt-10 flex flex-col gap-6 p-5 ">
         <h2 className='text-lg font-medium font-poppins mt-5 text-center'>Friend requests</h2>
         {
             friendRequest.map((item)=>(

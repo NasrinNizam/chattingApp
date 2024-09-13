@@ -9,6 +9,8 @@ export const User = () => {
   console.log(sliceUser)
   // ========== variables 
   const [allUsers , setAllUsers] =useState([])
+  const [request , setRequest] = useState(false)
+
   // ========== firebase variables
      const db = getDatabase();
     //  =============== realtime database
@@ -35,24 +37,31 @@ export const User = () => {
        receiverPhoto :items.userPhoto,
       });
     }
+    const handleRequest =()=>{
+      setRequest(!request)
+    }
   //  ============== console part
 
   return (
     <div className='container  flex justify-center items-center'>
-      <div className="w-[350px] bg-[#074173] bg-opacity-50 h-[500px] border-2 border-[#074173] rounded-lg mt-10 flex flex-col gap-6 p-5 ">
+      <div className="px-8 py-3 bg-[#074173] bg-opacity-50 h-[500px] border-2 border-[#074173] rounded-lg mt-10 flex flex-col gap-6 p-5 ">
         <h2 className='text-lg font-medium font-poppins mt-5 text-center'>People You may know</h2>
 
         {
           allUsers.map((item)=>(
-            <div key={item.key} className="singel_users flex justify-between mb-5 ">
+            <div key={item.key} className="singel_users flex justify-between gap-10 mb-5 ">
              <div className='flex items-center gap-5'> 
                 <div className=" bg-green-100 user_image w-[50px] h-[50px] rounded-full overflow-hidden">
                  <img src={item.userPhoto} alt="user photo" />
                  </div>
                  <h2 className='text-lg font-semibold'>{item.userName} </h2>
              </div>
-             <div className="butts">
-                 <button onClick={()=>handleAdd(item)} className='rounded-lg py-2 px-5 bg-[#074173] text-xl active:scale-95 transition-all text-white font-normal'>Add</button>
+             <div onClick={handleRequest} className="butts">
+              {request?
+                <button onClick={()=>handleAdd(item)} className='rounded-lg py-2 px-5 bg-red-700 text-xl active:scale-95 transition-all text-white font-normal'>Cencel Request</button>
+                :
+                <button onClick={()=>handleAdd(item)} className='rounded-lg py-2 px-5 bg-[#074173] text-xl active:scale-95 transition-all text-white font-normal'>Add</button>
+              }
              </div>
          </div>
           ))
