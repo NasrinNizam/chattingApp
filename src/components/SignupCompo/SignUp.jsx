@@ -56,12 +56,12 @@ export const SignUp = () => {
     setConfirmShow(!confirmShow)
    }
    // ================= main submit funtion 
-   const handelSubmit = (e)=>{
+   const handelSubmit = (e)=>{ 
     e.preventDefault()
 
     if(!Name){
         setNameError('Enter your Name')
-}
+    }
     if(!email){
             setEmailError('Enter your email')
     }
@@ -141,10 +141,7 @@ export const SignUp = () => {
              }
 
           });
-        }
-        
-        
-            
+        }    
     }
   }
   return (
