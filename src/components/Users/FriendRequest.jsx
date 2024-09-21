@@ -37,6 +37,10 @@ export const FriendRequest = () => {
       // ============== remove data from the friendRequest collection 
       remove(ref(db, 'friendrequest/' + data.key))
     }
+    const handleRemove =(data)=>{
+      remove(ref(db, 'friendrequest/' + data.key))
+
+    }
   //  ============== console part
 
   return (
@@ -48,13 +52,13 @@ export const FriendRequest = () => {
                 <div key={item.key} className="singel_users flex justify-between gap-14 mb-5 ">
                 <div className='flex items-center gap-5'> 
                    <div className=" bg-green-100 user_image w-[50px] h-[50px] rounded-full overflow-hidden">
-                    <img src={item.senderImage} alt="user photo" />
+                    <img src={item?.senderImage} alt="user photo" />
                     </div>
-                    <h2 className='text-lg font-semibold'>{item.senderName}</h2>
+                    <h2 className='text-lg font-semibold'>{item?.senderName}</h2>
                 </div>
                 <div className="flex items-center gap-5">
                     <button onClick={()=>handelConfirm(item)} className='rounded-lg py-2 px-5 bg-[#074173] text-xl active:scale-95 transition-all text-white font-normal'>Confirm</button>
-                    <button className='rounded-lg py-2 px-5 bg-red-800 text-xl active:scale-95 transition-all text-white font-normal'>Remove</button>
+                    <button onClick={()=>handleRemove(item)} className='rounded-lg py-2 px-5 bg-red-800 text-xl active:scale-95 transition-all text-white font-normal'>Remove</button>
                 </div>
             </div>
             ))

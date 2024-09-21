@@ -9,6 +9,7 @@ export const User = () => {
   console.log(sliceUser)
   // ========== variables 
   const [allUsers , setAllUsers] =useState([])
+  const [request, setRequest]=useState({});
 
   // ========== firebase variables
      const db = getDatabase();
@@ -35,6 +36,11 @@ export const User = () => {
        receiverName :items.userName,
        receiverPhoto :items.userPhoto,
       });
+
+      setRequest((prevStatus) => ({
+        ...prevStatus,
+        [items.uid]: true
+      }));
     }
       //  ============== console part
 
@@ -53,7 +59,17 @@ export const User = () => {
                  <h2 className='text-lg font-semibold'>{item.userName} </h2>
              </div>
              <div className="">
-                <button onClick={()=> handleAdd(item)} className='rounded-lg py-2 px-5 bg-[#074173] text-xl active:scale-95 transition-all text-white font-normal'>Add friend</button>
+             {
+               request[item.uid] ?
+                <button className="flex justify-center items-center gap-[5px] text-white bg-gray-400 font-medium py-[10px] px-[15px] rounded">
+                   Request sent
+                </button>
+                :
+                <button onClick={()=>handleAdd(item)} className="flex justify-center items-center gap-[5px] text-white bg-[#074173] font-medium py-[10px] px-[20px] rounded-lg">
+                    Add
+                </button>
+              }
+
              </div>
          </div>
           ))
