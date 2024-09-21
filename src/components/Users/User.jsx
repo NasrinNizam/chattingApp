@@ -9,7 +9,6 @@ export const User = () => {
   console.log(sliceUser)
   // ========== variables 
   const [allUsers , setAllUsers] =useState([])
-  const [request , setRequest] = useState(false)
 
   // ========== firebase variables
      const db = getDatabase();
@@ -37,10 +36,7 @@ export const User = () => {
        receiverPhoto :items.userPhoto,
       });
     }
-    const handleRequest =()=>{
-      setRequest(!request)
-    }
-  //  ============== console part
+      //  ============== console part
 
   return (
     <div className='container  flex justify-center items-center'>
@@ -57,14 +53,7 @@ export const User = () => {
                  <h2 className='text-lg font-semibold'>{item.userName} </h2>
              </div>
              <div className="">
-              {
-                request?
-                <div onClick={handleRequest} className="div"><button onClick={()=>handleAdd(item)} className='rounded-lg py-2 px-5 bg-red-700 text-xl active:scale-95 transition-all text-white font-normal'>Cencel Request</button></div>                
-                :
-                <div onClick={handleRequest} className="div"><button className='rounded-lg py-2 px-5 bg-[#074173] text-xl active:scale-95 transition-all text-white font-normal'>Add friend</button></div>                
-
-              }
-            
+                <button onClick={()=> handleAdd(item)} className='rounded-lg py-2 px-5 bg-[#074173] text-xl active:scale-95 transition-all text-white font-normal'>Add friend</button>
              </div>
          </div>
           ))

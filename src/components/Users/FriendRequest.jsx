@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getDatabase, ref, onValue } from "firebase/database";
+import { getDatabase, ref, onValue, remove, set, push } from "firebase/database";
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -17,13 +17,26 @@ export const FriendRequest = () => {
       onValue(starCountRef, (snapshot) => {
         let arr = []
         snapshot.forEach((item)=>{
-         if(item.val().uid !=sliceUser.uid){
-          arr.push({...item.val(), key:item.key})
-         } 
+          if(item.val().receiverId ==sliceUser.uid){
+            arr.push({...item.val(), key:item.key})
+         }
         })
         setFriendRequest(arr)
     });
     }, [])
+    const handelConfirm = (data)=>{
+      // ================ set data to friends collection 
+      set(push(ref(db, 'friends/' )), {
+        currentUserId: sliceUser.uid ,
+        currentUserName: sliceUser.displayName ,
+        currentUserPhoto: sliceUser.photoURL ,
+        friendId: data.senderId,
+        friendName: data.senderName , 
+        friendPhoto: data.senderImage,
+      });
+      // ============== remove data from the friendRequest collection 
+      remove(ref(db, 'friendrequest/' + data.key))
+    }
   //  ============== console part
 
   return (
@@ -40,7 +53,7 @@ export const FriendRequest = () => {
                     <h2 className='text-lg font-semibold'>{item.senderName}</h2>
                 </div>
                 <div className="flex items-center gap-5">
-                    <button className='rounded-lg py-2 px-5 bg-[#074173] text-xl active:scale-95 transition-all text-white font-normal'>Confirm</button>
+                    <button onClick={()=>handelConfirm(item)} className='rounded-lg py-2 px-5 bg-[#074173] text-xl active:scale-95 transition-all text-white font-normal'>Confirm</button>
                     <button className='rounded-lg py-2 px-5 bg-red-800 text-xl active:scale-95 transition-all text-white font-normal'>Remove</button>
                 </div>
             </div>

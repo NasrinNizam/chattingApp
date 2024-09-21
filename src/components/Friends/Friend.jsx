@@ -1,46 +1,49 @@
 import React, { useEffect, useState } from 'react'
 import { getDatabase, ref, onValue } from "firebase/database";
+import { useSelector } from 'react-redux';
 
 export const Friend = () => {
-  // ========== variables 
-  const [allUsers , setAllUsers] =useState([])
+  // ========== data get from redux
+  const sliceUser= useSelector((state)=>(state.counter.value)) 
+  // ========= react variables
+  const [friends , setFriends]  = useState([])
+
   // ========== firebase variables
      const db = getDatabase();
     //  =============== realtime database
     useEffect(()=>{
-      const starCountRef = ref(db, 'Allusers/');
+      const starCountRef = ref(db, 'friends/' );
       onValue(starCountRef, (snapshot) => {
-        let merry = []
+        let arr = []
         snapshot.forEach((item)=>{
-          merry.push(item.val())
+          arr.push({...item.val() , key:item.key})
         })
-        setAllUsers(merry)
-    });
-    }, [])
-  //  ============== console part
-  console.log(allUsers)
-
+        setFriends(arr)
+      });
+    } , [])
+  
+    
   return (
     <div className='container  flex justify-center items-center'>
-      <div className="w-[350px] bg-[#074173] bg-opacity-50 h-[500px] border-2 border-[#074173] rounded-lg mt-10 flex flex-col gap-6 p-5 ">
+      <div className="p-5 bg-[#074173] bg-opacity-50 h-[500px] border-2 border-[#074173] rounded-lg mt-10 flex flex-col gap-6 p-5 ">
         <h2 className='text-lg font-medium font-poppins mt-5 text-center'>Friends</h2>
 
-        {/* {
-          allUsers.map((item)=>(
-            <div className="singel_users flex justify-between mb-5 ">
+        {
+          friends.map((item)=>(
+            <div className="flex justify-between gap-8 mb-5 ">
              <div className='flex items-center gap-5'> 
                 <div className=" bg-green-100 user_image w-[50px] h-[50px] rounded-full overflow-hidden">
-                 <img src={item.userPhoto} alt="user photo" />
+                 <img src={item.friendPhoto} alt="user photo" />
                  </div>
-                 <h2 className='text-lg font-semibold'>{item.userName} </h2>
+                 <h2 className='text-lg font-semibold'>{item.friendName} </h2>
              </div>
              <div className="butts">
-                 <button className='rounded-lg py-2 px-5 bg-[#074173] text-xl text-white font-normal'>Add</button>
+                 <button className='rounded-lg py-2 px-5 bg-[#074173] text-xl text-white font-normal'>Unfriend</button>
              </div>
          </div>
           ))
         }
-            */}
+           
       </div>
     </div>
   )
